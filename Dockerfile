@@ -16,7 +16,6 @@ RUN chmod +x /opt/ndecrypt/NDecrypt
 COPY --from=web-build /out .
 ENV NDECRYPT_BIN=/opt/ndecrypt/NDecrypt
 ENV LIBRARY_ROOT=/library
-ENV OUTPUT_ROOT=/output
 ENV HOME=/root
 ENV ASPNETCORE_URLS=http://+:8080
 EXPOSE 8080
