@@ -63,6 +63,17 @@ app.MapPost("/api/decrypt", async (DecryptRequest req) =>
         return Results.BadRequest(new { error = "decryption failed", exitCode = process.ExitCode, stdout, stderr });
     }
 
+    // NDecrypt writes the real decrypted output to "<input>.dec" and leaves
+    // the input untouched for some formats (observed with 3DS), despite its
+    // own docs claiming in-place overwrite. If that sibling shows up, it's
+    // the actual result — swap it in and drop the untouched copy.
+    var decSidecar = destPath + ".dec";
+    if (File.Exists(decSidecar))
+    {
+        File.Delete(destPath);
+        File.Move(decSidecar, destPath);
+    }
+
     var resultInfo = new FileInfo(destPath);
     var relativeDest = Path.GetRelativePath(libraryRoot, destPath).Replace(Path.DirectorySeparatorChar, '/');
     return Results.Ok(new { path = relativeDest, size = resultInfo.Length, stdout, stderr });
