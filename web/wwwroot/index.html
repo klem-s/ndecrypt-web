@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NDecrypt</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { font-family: system-ui, sans-serif; margin: 0; padding: 1.5rem; background: #0f1115; color: #e7e9ee; }
+  h1 { font-size: 1.3rem; margin: 0 0 1rem; }
+  input[type=search] { width: 100%; max-width: 420px; padding: .5rem .7rem; border-radius: 6px; border: 1px solid #333; background: #1a1d24; color: inherit; margin-bottom: 1rem; }
+  table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+  th, td { text-align: left; padding: .5rem .6rem; border-bottom: 1px solid #262a33; }
+  th { color: #9aa3b2; font-weight: 600; }
+  tr:hover td { background: #161922; }
+  button { background: #3b5bdb; color: white; border: none; border-radius: 5px; padding: .35rem .8rem; cursor: pointer; font-size: .85rem; }
+  button:disabled { background: #343a46; cursor: default; }
+  button.force { background: #a13b3b; }
+  .status { font-size: .8rem; }
+  .status.ok { color: #51cf66; }
+  .status.err { color: #ff6b6b; white-space: pre-wrap; max-width: 320px; }
+  .size { color: #9aa3b2; font-size: .85rem; }
+  label.force-lbl { font-size: .75rem; color: #9aa3b2; margin-left: .5rem; }
+</style>
+</head>
+<body>
+  <h1>NDecrypt — bibliothèque ROMs</h1>
+  <input type="search" id="filter" placeholder="Filtrer (nom de fichier ou dossier)...">
+  <table>
+    <thead>
+      <tr><th>Fichier</th><th>Taille</th><th>Action</th><th>Résultat</th></tr>
+    </thead>
+    <tbody id="rows"></tbody>
+  </table>
+
+<script src="app.js"></script>
+</body>
+</html>
